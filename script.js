@@ -27,6 +27,27 @@ window.addEventListener("load", function () {
         </ol>
         <img src="${destinationPlanet.image}">`;
     });
+  let form = document.querySelector("form");
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    //prevent default should be the first thing in the form event listener
+    let pilotNameVar = document.getElementById("pilotName").value;
+    let copilotNameVar = document.querySelector(
+      "input[name= copilotName]"
+    ).value;
+    let fuelLevelVar = document.querySelector("input[name= fuelLevel]").value;
+    let cargoMassVar = document.querySelector("input[name= cargoMass]").value;
+    let faultyItemsVar = document.getElementById("faultyItems");
+    formSubmission(
+      document,
+      faultyItemsVar,
+      pilotNameVar,
+      copilotNameVar,
+      fuelLevelVar,
+      cargoMassVar
+    );
+  });
 });
 
 //On Adding Validation
@@ -34,22 +55,3 @@ window.addEventListener("load", function () {
 //(you should only ever have one!)
 //before we worry about validating these inputs, we need to
 //select the form and listen for the submit event
-let form = document.querySelector("form");
-
-form.addEventListener("submit", function (event) {
-  event.preventDefault();
-  //prevent default should be the first thing in the form event listener
-  let pilotNameVar = document.getElementById("pilotName").value;
-  let copilotNameVar = document.querySelector("input[name= copilotName]").value;
-  let fuelLevelVar = document.querySelector("input[name= fuelLevel]").value;
-  let cargoMassVar = document.querySelector("input[name= cargoMass]").value;
-  let faultyItemsVar = document.getElementById("faultyItems");
-  formSubmission(
-    document,
-    faultyItemsVar,
-    pilotNameVar,
-    copilotNameVar,
-    fuelLevelVar,
-    cargoMassVar
-  );
-});
